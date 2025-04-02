@@ -1,34 +1,27 @@
-import matplotlib.pyplot as plt
-
-# 1. 创建字典存储编程语言及其使用比例
-language_usage = {
-    "JavaScript": 62.3,
-    "HTML": 52.9,
-    "Python": 51,
-    "SQL": 51,
-    "TypeScript": 38.5
-}
-
-# 2. 绘制柱状图
-plt.figure(figsize=(8, 5))  # 设置图表大小
-plt.bar(language_usage.keys(), language_usage.values(), color=['blue', 'red', 'green', 'purple', 'orange'])
-
-# 设置图表标题和标签
-plt.xlabel("Programming Languages")
-plt.ylabel("Percentage of Developers (%)")
-plt.title("Popularity of Programming Languages (Feb 2024)")
-
-# 显示具体数值
-for i, v in enumerate(language_usage.values()):
-    plt.text(i, v + 1, f"{v}%", ha='center', fontsize=10)
-
-plt.ylim(0, 70)  # 设置 y 轴范围
-plt.grid(axis='y', linestyle='--', alpha=0.6)  # 添加网格线
-plt.show()  # 显示图表
-
-# 3. 查询某种语言的使用率
-query_language = "Python"  # <- 修改此变量以查询其他语言
-if query_language in language_usage:
-    print(f"The percentage of developers who use {query_language} is {language_usage[query_language]}%.")
+#Pseudicode:
+# 1. Create a dictionary with programming languages and their popularity percentages.
+# 2. Let the user to input a programming language to check.
+# 3. Give the user the percentage of developers using that language.
+# 4. If the language is not in the dictionary, inform the user.
+# 5. Create a bar chart to visualize the popularity of programming languages.
+# Actual code:
+language={"JavaScript": 62.3, "HTML":52.9, "Python":51, "SQL":51, "TypeScript": 38.5} # Create a dictionary with programming languages and their popularity percentages.
+target_language=input("Enter the programming language you want to check: ") # Let the user to input a programming language to check.
+if target_language in language:
+    target_percentage=language[target_language] 
+    print(f"{target_language} is used by {target_percentage}% of developers") # If the language is in the dictionary, give the user the percentage of developers using that language.
 else:
-    print("Language not found in the dataset.")
+    print(f"{target_language} is not in the list") # If the language is not in the dictionary, inform the user.
+import numpy as np # Import numpy for numerical operations.
+import matplotlib.pyplot as plt # Import matplotlib for visualization.
+N=len(language) # Get the number of programming languages.  
+percentage=list(language.values()) # Get the popularity percentages of programming languages.
+x=np.arange(N) # Create an array of x-coordinates
+width=0.3 # Set the width of the bars
+plt.bar(x, percentage, width, color="blue") 
+plt.title("Programming language popularity") # Set the title of the bar chart.
+plt.xlabel("programming languages") # Set the x-axis label.
+plt.ylabel("percentage(%)") # Set the y-axis label.
+plt.xticks(x,language.keys()) # Set the x-ticks to the programming language names.
+plt.yticks(np.arange(0, 101, 10)) # Set the y-ticks to range from 0 to 100 with a step of 10.
+plt.show() # Show the bar chart.
