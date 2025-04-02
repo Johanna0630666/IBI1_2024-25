@@ -1,25 +1,27 @@
-# Pseudo-code:
-# 1. Get user input for weight (kg) and height (m)
+# Pseudocode:
+# 1. Let user input their weight (kg) and height (m)
 # 2. Calculate BMI using formula: weight / (height^2)
-# 3. Classify into categories: obese (≥30), underweight (<18.5), normal otherwise
-# 4. Output sentence with BMI value and classification
+# 3. Classify into categories:
+#    If the BMI<18.5, the person is underweight
+#    If the 18.5<=BMI<30, the person is normal weight
+#    If the BMI>30, the person is obese
+# 4. Output sentence with BMI value and category
 
 # Actual code:
-# Get user input
-weight = float(input("Enter your weight in kg: "))
-height = float(input("Enter your height in meters: "))
+# Get user's input
+weight = float(input("Enter your weight in kg: ")) #Get user's weight in kg
+height = float(input("Enter your height in meters: ")) #Get user's height in meters
 
-# Calculate BMI
-bmi = weight/(height *height)
+# Calculate BMI using the formula: weight / (height^2)
+BMI = weight/(height *height)
 
-# Determine classification
-if bmi < 18.5:
+# Determine the category based on BMI value
+if BMI < 18.5:
     category = "underweight"
-elif 18.5 <= bmi < 30:
+elif 18.5 <= BMI < 30:
     category = "normal weight"
 else:
     category = "obese"
 
-# Generate output sentence
-output =  "Your BMI is " + str(round(bmi, 1)) + ", which classifies you as " + category + "."
-print(output)
+# Output sentence with BMI value and category
+print("Your BMI is " + str(BMI) + ", and you are considered " + category + ".")
