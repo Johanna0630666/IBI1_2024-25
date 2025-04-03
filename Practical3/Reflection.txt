@@ -1,0 +1,7 @@
+This is my first time to learn Git and GitHub, and some operation methods are unfamiliar to me. 
+Especially about the use of terminals, such as creating a new branch, making modifications, and merging changes into the master branch. 
+However, these operations also give me a deeper understanding of workflow. Moreover, forking an existing repository, cloning it locally, and pushing my own changes are also challenging. 
+But after discussing with my classmates and consulting with the teacher, I can gradually complete these operations better. 
+This practical makes me feel very fruitful because I can gradually master a new technique skill. 
+At the same time, I also realize the strong ability of Git and Github in working together as they can contribute to collaborative coding environments. 
+After this practical activity, I decided to improve my python ability so that I can program more interesting and complex projects in the future!
