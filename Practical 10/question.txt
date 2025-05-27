@@ -1,0 +1,7 @@
+Question: What country or countries have recorded a DALYs greater than 650,000 in a single year?
+
+Line number in dalys.py where analysis starts: 48
+
+Result discussion:
+The only country with DALYs greater than 650,000 in a single year was Rwanda in 1994, with a value of 693,367.49.
+This extreme value is likely to reflect the serious public health impact of the Rwandan massacre, including mass displacement, violence and the collapse of the health system.
