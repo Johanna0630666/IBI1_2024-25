@@ -1,0 +1,15 @@
+This practice is both challenging and rewarding for me.
+The basic SIR model is relatively easy to implement, with clear logic and intuitive parameter control. 
+However, when implementing the two-dimensional spatial propagation model (spatial_SIR.py), the difficulty increases significantly, especially in drawing dynamic diagrams. 
+
+I especially like to observe how the infection spreads step by step in the grid. 
+Through animation, I can feel the spread of the disease very intuitively.
+This visual simulation has enhanced my understanding of the transmission mechanism of infectious disease models.
+
+The most difficult part for me is to update the dynamic diagram correctly at every time step.
+When learning to use Matplotlib's interactive drawing functions (such as plt.ion, plt.pause, ax.clear), I encountered some technical problems and debugged several times to achieve the expected effect.
+But when I finally saw the animation running smoothly, I felt a sense of accomplishment.
+
+This practice made me realize the significant impact of spatial structure on disease transmission, and also improved my ability to use NumPy and Matplotlib for simulation and visualization.
+
+In general, this practice is very meaningful, which not only deepens my understanding of the SIR model, but also exercises my programming and problem-solving skills.
