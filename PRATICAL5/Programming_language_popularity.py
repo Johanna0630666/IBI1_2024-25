@@ -7,7 +7,7 @@
 # Actual code:
 language={"JavaScript": 62.3, "HTML":52.9, "Python":51, "SQL":51, "TypeScript": 38.5} # Create a dictionary with programming languages and their popularity percentages.
 print("Current language popularity dictionary:")
-print(language)  # Step 2: Print the dictionary so users can see the full list
+print(language)  # Print the dictionary so users can see the full list
 target_language=input("Enter the programming language you want to check: ") # Let the user to input a programming language to check.
 if target_language in language:
     target_percentage=language[target_language] 
