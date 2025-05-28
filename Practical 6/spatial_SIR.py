@@ -1,86 +1,63 @@
 # spatial_SIR.py
 
-import numpy as np
-import matplotlib.pyplot as plt
+import numpy as np # Import NumPy for numerical operations
+import matplotlib.pyplot as plt # Import Matplotlib for plotting
 
-# ----------------------------
 # 1. Define simulation parameters
-# ----------------------------
+
 grid_size = 100          # Grid size (100x100)
 beta = 0.2               # Infection probability per neighbor
 gamma = 0.05             # Recovery probability
 time_steps = 101         # Simulate 101 time points (from t=0 to t=100)
 
-# ----------------------------
 # 2. Initialize the population grid
-# ----------------------------
 # State encoding:
 # 0 = susceptible
 # 1 = infected
 # 2 = recovered
-population = np.zeros((grid_size, grid_size), dtype=int)
+population = np.zeros((grid_size, grid_size), dtype=int) # Create a grid of zeros (susceptible individuals)
 
 # Randomly select one individual to start the outbreak
-outbreak = np.random.choice(grid_size, size=2)
-population[outbreak[0], outbreak[1]] = 1
+outbreak = np.random.choice(grid_size, size=2) # Randomly select a position in the grid for the outbreak
+population[outbreak[0], outbreak[1]] = 1 # Mark the selected individual as infected
 
-# ----------------------------
+
 # 3. Setup plotting (animated)
-# ----------------------------
 plt.ion()  # Turn on interactive mode
-fig, ax = plt.subplots(figsize=(6, 4), dpi=150)
+fig, ax = plt.subplots(figsize=(6, 4), dpi=150) # Create a figure and axis for plotting
 
-# ----------------------------
+
 # 4. Simulate disease spread
-# ----------------------------
+for t in range(time_steps): 
+    new_population = population.copy() # Create a copy of the current population grid to update
 
-# Pseudocode:
-# For each time step:
-#   1. Copy the current population grid to avoid in-place updates
-#   2. Find coordinates of all infected individuals
-#   3. For each infected individual:
-#       a. Possibly recover (with probability gamma)
-#       b. Try to infect all 8 neighboring cells (with probability beta)
-#   4. Replace the population grid with the updated version
-#   5. Plot the current grid as a heat map
+    infected_x, infected_y = np.where(population == 1) # Get coordinates of infected individuals
+    for x, y in zip(infected_x, infected_y): # Iterate over each infected individual
 
-for t in range(time_steps):
-    new_population = population.copy()
+        if np.random.rand() < gamma: # Randomly decide if the infected individual recovers
+            new_population[x, y] = 2 # Mark as recovered
+            continue # Recover infected individual
 
-    # Step 1: Find all currently infected cells
-    infected_x, infected_y = np.where(population == 1)
-
-    # Step 2: Process each infected cell
-    for x, y in zip(infected_x, infected_y):
-
-        # Step 2a: Recovery check
-        if np.random.rand() < gamma:
-            new_population[x, y] = 2
-            continue
-
-        # Step 2b: Attempt to infect neighbors
-        for dx in [-1, 0, 1]:
+        for dx in [-1, 0, 1]: # Iterate over neighboring cells
             for dy in [-1, 0, 1]:
-                if dx == 0 and dy == 0:
+                if dx == 0 and dy == 0: # Skip the current cell (self)
                     continue  # Skip self
-                nx, ny = x + dx, y + dy
-                if 0 <= nx < grid_size and 0 <= ny < grid_size:
-                    if population[nx, ny] == 0 and np.random.rand() < beta:
-                        new_population[nx, ny] = 1
+                nx, ny = x + dx, y + dy # Calculate neighbor coordinates
+                if 0 <= nx < grid_size and 0 <= ny < grid_size: # Check if neighbor coordinates are within grid bounds
+                    if population[nx, ny] == 0 and np.random.rand() < beta: # If neighbor is susceptible and infection occurs
+                        new_population[nx, ny] = 1 # Mark neighbor as infected
 
-    # Step 3: Update population grid
-    population = new_population
+    population = new_population # Update the population grid with the new state
 
-    # Step 4: Plot current grid
-    ax.clear()
-    img = ax.imshow(population, cmap='viridis', interpolation='nearest')
-    ax.set_title(f"Time step: {t}")
-    ax.set_xlabel("X coordinate")
-    ax.set_ylabel("Y coordinate")
-    plt.pause(0.1)
+    # Plot current grid
+    ax.clear() # Clear the axis for the new plot
+    img = ax.imshow(population, cmap='viridis', interpolation='nearest') # Display the population grid
+    ax.set_title(f"Time step: {t}") # Set the title to show the current time step
+    ax.set_xlabel("X coordinate") # Set the x-axis label
+    ax.set_ylabel("Y coordinate") # Set the y-axis label
+    plt.pause(0.1) # Pause to update the plot
 
-# ----------------------------
+
 # 5. Finish animation
-# ----------------------------
-plt.ioff()
-plt.show()
+plt.ioff() # Turn off interactive mode
+plt.show() # Show the final plot after the simulation ends
