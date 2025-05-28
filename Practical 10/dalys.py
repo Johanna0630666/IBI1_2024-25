@@ -5,7 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 #  Import the .csv file
-file_path = "C:/Users/frank/Desktop/IBI1/IBI1_2024-25/Practical10/dalys-rate-from-all-causes.csv"
+file_path = "C:/Users/frank/Desktop/IBI1/IBI1_2024-25/Practical 10/dalys-rate-from-all-causes.csv"
 dalys_data = pd.read_csv(file_path)
 
 # Show the third column (the year) for the first 10 rows (inclusive)
