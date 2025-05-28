@@ -4,7 +4,7 @@ import time
 
 # ---------------- DOM Method ----------------
 dom_start = time.time()  # Start timing the DOM parsing
-dom_tree = minidom.parse("C:/Users/frank/Desktop/IBI1/IBI1_2024-25/Practical14/go_obo.xml")
+dom_tree = minidom.parse("C:/Users/frank/Desktop/IBI1/IBI1_2024-25/Practical 14/go_obo.xml")
 terms = dom_tree.getElementsByTagName("term")  # Get all <term> elements from the DOM tree
 
 # Track deepest term for each ontology
@@ -94,7 +94,7 @@ sax_start = time.time()  # Start timing the SAX parsing
 parser = xml.sax.make_parser()
 handler = GOHandler()
 parser.setContentHandler(handler)
-parser.parse("C:/Users/frank/Desktop/IBI1/IBI1_2024-25/Practical14/go_obo.xml")
+parser.parse("C:/Users/frank/Desktop/IBI1/IBI1_2024-25/Practical 14/go_obo.xml")
 sax_end = time.time()
 sax_duration = sax_end - sax_start
 
